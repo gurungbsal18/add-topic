@@ -8,12 +8,13 @@ export default function EditTopicForm({ id, title, description }) {
   const [newDescription, setNewDescription] = useState(description);
 
   const router = useRouter();
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const res = await fetch(`http://localhost:3000/api/topics/${id}`, {
+      const res = await fetch(`${apiUrl}api/topics/${id}`, {
         method: "PUT",
         headers: {
           "Content-type": "application/json",
